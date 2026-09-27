@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vishwa Prasad V K - Computer Science graduate portfolio">
+  <title>Vishwa Prasad V K | Portfolio</title>
+  <style>
+    :root{
+      --bg:#070b17; --surface:rgba(14,22,42,.88); --text:#edf4ff; --muted:#a8b6d0;
+      --accent:#62d9ff; --accent2:#9b7cff; --border:rgba(98,217,255,.16);
+      --shadow:0 12px 35px rgba(0,0,0,.28); --radius:18px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(98,217,255,.13), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(155,124,255,.12), transparent 30%),
+        radial-gradient(circle at 50% 85%, rgba(35,112,255,.09), transparent 32%),
+        linear-gradient(135deg,#050814 0%,#0a1020 48%,#070b17 100%);
+      background-attachment:fixed;color:var(--text);line-height:1.6;
+      position:relative;
+    }
+    body::before{
+      content:"";position:fixed;inset:0;pointer-events:none;opacity:.34;
+      background-image:
+        linear-gradient(rgba(98,217,255,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(98,217,255,.045) 1px,transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom,black,transparent 90%);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(5,8,20,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    nav{min-height:70px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:800;font-size:1.15rem}
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:25px;list-style:none;font-size:.95rem}
+    .nav-links a{color:var(--muted);font-weight:600;transition:color .2s}
+    .nav-links a:hover{color:var(--accent)}
+    .menu{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer}
+    section{padding:85px 0}
+    .hero{min-height:calc(100vh - 70px);display:flex;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:60px;align-items:center}
+    .eyebrow{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem}
+    h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;margin:12px 0 20px}
+    h1 span{color:var(--accent)}
+    .hero p{font-size:1.1rem;color:var(--muted);max-width:650px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-block;padding:12px 19px;border-radius:10px;font-weight:700;border:1px solid var(--accent);transition:transform .2s,background .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .primary{background:var(--accent);color:#fff}
+    .primary:hover{background:var(--accent2)}
+    .secondary{color:var(--accent);background:rgba(14,22,42,.7)}
+    .hero-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:35px;box-shadow:var(--shadow)}
+    .initials{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,rgba(98,217,255,.16),rgba(155,124,255,.18));color:var(--accent);box-shadow:0 0 35px rgba(98,217,255,.10);display:grid;place-items:center;font-size:2.4rem;font-weight:900;margin:0 auto 25px}
+    .hero-card h3{text-align:center}
+    .hero-card p{text-align:center;color:var(--muted);margin-top:5px}
+    .section-title{font-size:2rem;margin-bottom:10px}
+    .section-subtitle{color:var(--muted);margin-bottom:35px}
+    .about-box,.contact-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .about-box::before,.contact-box::before,.project::before,.item::before,.edu-card::before{
+      content:"";position:absolute;top:0;left:12%;right:12%;height:1px;
+      background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);opacity:.55;
+    }
+    .grid{display:grid;gap:20px}
+    .skills{grid-template-columns:repeat(4,1fr)}
+    .skill{background:var(--surface);border:1px solid var(--border);padding:18px;border-radius:14px;font-weight:700}
+    .skill small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
+    .timeline{display:grid;gap:18px}
+    .item{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:23px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .item h3{font-size:1.1rem}
+    .meta{color:var(--accent);font-weight:700;font-size:.9rem;margin:4px 0 10px}
+    .item ul{padding-left:20px;color:var(--muted)}
+    .project{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+    .tag{background:rgba(98,217,255,.09);color:var(--accent);border:1px solid rgba(98,217,255,.14);padding:6px 10px;border-radius:20px;font-size:.82rem;font-weight:700}
+    .two{grid-template-columns:1fr 1fr}
+    .edu-card{background:var(--surface);padding:24px;border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden}
+    .contact-list{display:grid;gap:14px}
+    .contact-list a{color:var(--accent);font-weight:700;word-break:break-word}
+    footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--border);background:rgba(5,8,20,.35)}
+    .fade{animation:fadeUp .6s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    @media(max-width:800px){
+      .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:rgba(5,8,20,.98);padding:18px 4%;border-bottom:1px solid var(--border);flex-direction:column;gap:15px}
+      .nav-links.open{display:flex}.menu{display:block}
+      .hero-grid,.two{grid-template-columns:1fr}.hero{padding:55px 0}
+      section{padding:65px 0}.skills{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:480px){
+      .container{width:90%}.skills{grid-template-columns:1fr 1fr}
+      h1{font-size:2.65rem}.hero-card{padding:25px}.buttons .btn{width:100%;text-align:center}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">Vishwa<span>.</span></a>
+    <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+      <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#education" onclick="closeMenu()">Education</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="fade">
+      <div class="eyebrow">Computer Science Graduate</div>
+      <h1>Hi, I'm <span>Vishwa Prasad</span>.</h1>
+      <p>Enthusiastic and detail-oriented Computer Science graduate with a strong foundation in Python, JavaScript, HTML, CSS, SQL, and practical experience across web development, AI prompt engineering, mobile applications, and IoT.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">View Project</a>
+        <a class="btn secondary" href="#contact">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-card fade">
+      <div class="initials">VP</div>
+      <h3>Vishwa Prasad V K</h3>
+      <p>B.E. Computer Science</p>
+      <p>CGPA: 8.57 / 10</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">A quick introduction</p>
+    <div class="about-box">
+      <p>I am a Computer Science graduate interested in building practical software solutions and learning new technologies. My experience includes AI prompt engineering, full stack development, mobile app development, web development, and an IoT-based smart farming project. I enjoy problem solving, teamwork, debugging, and creating user-friendly applications.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Technical Skills</h2>
+    <p class="section-subtitle">Technologies and concepts from my resume</p>
+    <div class="grid skills">
+      <div class="skill">Python<small>Programming</small></div>
+      <div class="skill">JavaScript<small>Programming & Web</small></div>
+      <div class="skill">HTML & CSS<small>Web Technologies</small></div>
+      <div class="skill">SQL<small>Database</small></div>
+      <div class="skill">Firebase<small>Realtime Database</small></div>
+      <div class="skill">C Programming<small>Basics</small></div>
+      <div class="skill">Power BI<small>Data & Visualization</small></div>
+      <div class="skill">DSA<small>Core Concepts</small></div>
+      <div class="skill">Debugging<small>Development Practice</small></div>
+      <div class="skill">Testing<small>Software Practice</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Internship Experience</h2>
+    <p class="section-subtitle">Hands-on industry exposure</p>
+    <div class="timeline">
+      <article class="item">
+        <h3>AI Prompt Engineer Intern — InAmigos Foundation</h3>
+        <div class="meta">Aug 2026 – Sept 2026</div>
+        <ul><li>Designed, tested, and optimized prompts for large language models to improve task precision and efficiency.</li></ul>
+      </article>
+      <article class="item">
+        <h3>Full Stack Developer Intern — ISM University</h3>
+        <div class="meta">Jan 2026 – Mar 2026</div>
+        <ul><li>Developed dynamic web applications across frontend and backend components.</li><li>Worked with relational databases and web application architecture.</li><li>Applied debugging, unit testing, code reviews, and team collaboration.</li></ul>
+      </article>
+      <article class="item">
+        <h3>Mobile App Development Intern — AK Infopark</h3>
+        <div class="meta">Jul 2025 · 2 weeks · Nagercoil, Tamil Nadu</div>
+        <ul><li>Designed and developed small-scale mobile applications with UI components and core functionality.</li><li>Gained experience across the mobile application development lifecycle.</li></ul>
+      </article>
+      <article class="item">
+        <h3>Web Development Intern — Exlife Solutions</h3>
+        <div class="meta">Mar 2024 · 1 week · Trivandrum, Kerala</div>
+        <ul><li>Developed and enhanced small-scale web projects using HTML, CSS, JavaScript, and modern frameworks.</li><li>Designed responsive, user-friendly interfaces.</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Featured Project</h2>
+    <p class="section-subtitle">IoT-based agricultural monitoring and automation</p>
+    <article class="project">
+      <h3>Smart Farming System</h3>
+      <p>Built an IoT-based smart farming solution for real-time agricultural monitoring and automated irrigation.</p>
+      <div class="tags">
+        <span class="tag">ESP32</span><span class="tag">Firebase</span><span class="tag">GSM</span>
+        <span class="tag">IoT Sensors</span><span class="tag">Automated Irrigation</span>
+      </div>
+      <ul>
+        <li>Integrated soil moisture, temperature, humidity, and light sensors for continuous field data collection.</li>
+        <li>Used Firebase Realtime Database for cloud storage, synchronization, and remote monitoring.</li>
+        <li>Implemented relay-controlled water pumps for automated irrigation.</li>
+        <li>Built SMS notifications for irrigation status and environmental alerts.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <h2 class="section-title">Education & Certifications</h2>
+    <p class="section-subtitle">Academic background</p>
+    <div class="grid two">
+      <div class="edu-card">
+        <h3>B.E. in Computer Science</h3>
+        <p>Amrita College of Engineering and Technology</p>
+        <div class="meta">2022 – 2026 · CGPA 8.57 / 10</div>
+        <hr style="border:0;border-top:1px solid var(--border);margin:18px 0"><br>
+        <h3>HSC / Class XII</h3><p>Arunachalam Higher Secondary School, Thiruvattar</p><div class="meta">2022 · 91.5%</div>
+        <h3>SSLC / Class X</h3><p>Sree Rama Krishna Bala Vidhya Matriculation Higher Secondary School, Kulasekharam</p><div class="meta">2020 · 94.8%</div>
+      </div>
+      <div class="edu-card">
+        <h3>Certifications</h3><br>
+        <p><strong>Basics of Data Science</strong><br>UniAthena</p><br>
+        <p><strong>Basics of Artificial Intelligence</strong><br>UniAthena</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-subtitle">Feel free to reach out for opportunities and professional connections.</p>
+    <div class="contact-box contact-list">
+      <div>📧 Email: <a href="mailto:vishwaprasad222@gmail.com">vishwaprasad222@gmail.com</a></div>
+      <div>📱 Phone: <a href="tel:+918754903385">+91 8754903385</a></div>
+      <div>💼 LinkedIn: <a href="https://www.linkedin.com/in/vishwa-prasad-v-k-53b83238a" target="_blank" rel="noopener">linkedin.com/in/vishwa-prasad-v-k-53b83238a</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">© 2026 Vishwa Prasad V K · Portfolio</div>
+</footer>
+
+<script>
+  function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+  function closeMenu(){document.getElementById('navLinks').classList.remove('open')}
+</script>
+</body>
+</html>
